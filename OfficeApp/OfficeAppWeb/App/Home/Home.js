@@ -3,25 +3,19 @@
 (function () {
     "use strict";
 
-    // The initialize function must be run each time a new page is loaded
-    Office.initialize = function (reason) {
-        $(document).ready(function () {
-            app.initialize();
+    app.controller('homeController', ['$scope', '$officeSvrvice', function ($scope, $officeSvrvice) {
+        $scope.selection = '[display the select data here]';
 
-            $('#get-data-from-selection').click(getDataFromSelection);
-        });
-    };
-
-    // Reads data from current document selection and displays a notification
-    function getDataFromSelection() {
-        Office.context.document.getSelectedDataAsync(Office.CoercionType.Text,
-            function (result) {
+        $scope.getSelectedData = function () {
+            $officeSvrvice.getSelectedData(Office.CoercionType.Text).then(function (result) {
                 if (result.status === Office.AsyncResultStatus.Succeeded) {
-                    app.showNotification('The selected text is:', '"' + result.value + '"');
+                    $scope.selection = result.value;
+
+                    util.showNotification('The selected text is:', '"' + result.value + '"');
                 } else {
-                    app.showNotification('Error:', result.error.message);
+                    util.showNotification('Error:', result.error.message);
                 }
-            }
-        );
-    }
+            });
+        }
+    }]);
 })();
