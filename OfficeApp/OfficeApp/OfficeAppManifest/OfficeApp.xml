@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TaskPaneApp">
+  <Id>d65d0ccb-812a-40ad-b1a9-d68061df0ced</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>[Provider name]</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="OfficeApp" />
+  <Description DefaultValue="OfficeApp"/>
+  <Capabilities>
+    <Capability Name="Workbook" />
+    <Capability Name="Presentation" />
+    <Capability Name="Project" />
+    <Capability Name="Document" />
+  </Capabilities>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="~remoteAppUrl/App/Home/Home.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>
