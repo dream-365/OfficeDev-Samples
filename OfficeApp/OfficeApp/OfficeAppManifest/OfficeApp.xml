@@ -6,7 +6,10 @@
   <ProviderName>[Provider name]</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Office Addins" />
-  <Description DefaultValue="OfficeApp"/>
+  <Description DefaultValue="Office App examples"/>
+  <AppDomains>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+  </AppDomains>
   <Capabilities>
     <Capability Name="Workbook" />
     <Capability Name="Presentation" />
@@ -14,7 +17,7 @@
     <Capability Name="Document" />
   </Capabilities>
   <DefaultSettings>
-    <SourceLocation DefaultValue="~remoteAppUrl/App/Home/Home.html" />
+    <SourceLocation DefaultValue="~remoteAppUrl/Index.html" />
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
 </OfficeApp>

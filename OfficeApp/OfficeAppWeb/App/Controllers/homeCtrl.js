@@ -3,7 +3,7 @@
 (function () {
     "use strict";
 
-    app.controller('homeController', ['$scope', '$officeSvrvice', function ($scope, $officeSvrvice) {
+    app.controller('homeCtrl', ['$scope', '$officeSvrvice', 'adalAuthenticationService', function ($scope, $officeSvrvice, adalService) {
         $scope.selection = '[display the select data here]';
 
         $scope.getSelectedData = function () {
@@ -17,5 +17,9 @@
                 }
             });
         }
+
+        $scope.login = function () {
+            adalService.login();
+        };
     }]);
 })();

@@ -58,6 +58,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Controllers\homeCtrl.js" />
+    <Content Include="App\Controllers\mainCtrl.js" />
+    <Content Include="App\Views\home.html" />
+    <Content Include="Index.html" />
+    <Content Include="Scripts\adal-angular.js" />
+    <Content Include="Scripts\adal.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -851,10 +857,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\App.css" />
+    <Content Include="Content\App.css" />
     <Content Include="App\App.js" />
-    <Content Include="App\Home\Home.html" />
-    <Content Include="App\Home\Home.js" />
     <Content Include="Content\Office.css" />
     <Content Include="Images\Close.png" />
     <Content Include="packages.config" />
@@ -1117,6 +1121,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1132,7 +1137,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50580</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50580/</IISUrl>
+          <IISUrl>http://localhost:10105/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

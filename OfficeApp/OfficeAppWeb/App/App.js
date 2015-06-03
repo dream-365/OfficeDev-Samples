@@ -36,7 +36,35 @@ Office.initialize = function (reason) {
     });
 };
 
-var app = angular.module('officeAddin', []);
+var app = angular.module('officeAddin', ['ngRoute', 'AdalAngular']);
+
+app.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $httpProvider, adalProvider) {
+
+    $routeProvider.when("/Home", {
+        controller: "homeCtrl",
+        templateUrl: "/App/Views/Home.html",
+    }).otherwise({ redirectTo: "/Home" });
+
+    var endpoints = {
+        // Map the location of a request to an API to a the identifier of the associated resource
+        "http://localhost":
+            "[APP URI ID]",
+    };
+
+    adalProvider.init(
+        {
+            instance: 'https://login.microsoftonline.com/',
+            tenant: '[tenant-name.onmicrosoft.com]',
+            clientId: '[app-client-id]',
+            extraQueryParameter: 'nux=1',
+            endpoints: endpoints,
+            cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.  
+            // Also, token acquisition for the To Go API will fail in IE when running on localhost, due to IE security restrictions.
+        },
+        $httpProvider
+        );
+
+}]);
 
 app.factory('$officeSvrvice', ['$q', function ($q) {
     return {

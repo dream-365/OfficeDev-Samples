@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link href="Content/App.css" rel="stylesheet" />
+    <link href="Content/Office.css" rel="stylesheet" />
+    <title>Office Addins</title>
+</head>
+<body ng-app="officeAddin">
+    <div id="content-header">
+        <div class="padding">
+            <h1>Office Addins</h1>
+        </div>
+    </div>
+    <div id="content-main">
+        <div ng-controller="mainCtrl">
+            <button ng-click="login()" ng-hide="userInfo.isAuthenticated">Login</button>
+            <button ng-click="logout()" ng-show="userInfo.isAuthenticated">Logout</button>
+        </div>
+        <div class="padding" ng-view>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <script src="../../Scripts/jquery-2.1.4.min.js"></script>
+            <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+            <script src="../../Scripts/angular.js"></script>
+            <script src="../../Scripts/angular-route.js"></script>
+            <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/adal.min.js"></script>
+            <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/adal-angular.min.js"></script>
+            <script src="App/App.js"></script>
+            <script src="App/Controllers/mainCtrl.js"></script>
+            <script src="App/Controllers/homeCtrl.js"></script>
+        </div>
+    </footer>
+</body>
+</html>
