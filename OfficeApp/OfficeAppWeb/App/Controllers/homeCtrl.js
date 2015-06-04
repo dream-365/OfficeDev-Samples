@@ -3,7 +3,7 @@
 (function () {
     "use strict";
 
-    app.controller('homeCtrl', ['$scope', '$officeSvrvice', 'adalAuthenticationService', function ($scope, $officeSvrvice, adalService) {
+    app.controller('homeCtrl', ['$scope', '$officeSvrvice', 'o365ApiSvc', function ($scope, $officeSvrvice, o365ApiSvc) {
         $scope.selection = '[display the select data here]';
 
         $scope.getSelectedData = function () {
@@ -18,8 +18,12 @@
             });
         }
 
-        $scope.login = function () {
-            adalService.login();
-        };
+        $scope.getContacts = function()
+        {
+            o365ApiSvc.getContacts()
+                       .success(function (data, status, headers, config) {
+                           util.showNotification('Info:', 'get contacts succeed!');
+            });
+        }
     }]);
 })();

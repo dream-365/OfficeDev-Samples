@@ -58,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\config.js" />
     <Content Include="App\Controllers\homeCtrl.js" />
     <Content Include="App\Controllers\mainCtrl.js" />
     <Content Include="App\Views\home.html" />

@@ -47,15 +47,14 @@ app.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvide
 
     var endpoints = {
         // Map the location of a request to an API to a the identifier of the associated resource
-        "http://localhost":
-            "[APP URI ID]",
+        "https://outlook.office365.com/api": "https://outlook.office365.com"
     };
 
     adalProvider.init(
         {
             instance: 'https://login.microsoftonline.com/',
-            tenant: '[tenant-name.onmicrosoft.com]',
-            clientId: '[app-client-id]',
+            tenant: config.tenant,
+            clientId: config.clientId,
             extraQueryParameter: 'nux=1',
             endpoints: endpoints,
             cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.  
@@ -89,4 +88,12 @@ app.factory('$officeSvrvice', ['$q', function ($q) {
     }
 }]);
 
+
+app.factory('o365ApiSvc', ['$http', function ($http) {
+    return {
+        getContacts: function () {
+            return $http.get('https://outlook.office365.com/api/v1.0/me/contacts');
+        }
+    };
+}]);
 
