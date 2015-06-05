@@ -25,6 +25,9 @@ app.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvide
     }).when('/contacts', {
         controller: "contactsCtrl",
         templateUrl: "/App/Views/contacts.html"
+    }).when('/mails', {
+        controller: "mailsCtrl",
+        templateUrl: "/App/Views/mails.html"
     }).otherwise({ redirectTo: "/home" });
 
     var endpoints = {

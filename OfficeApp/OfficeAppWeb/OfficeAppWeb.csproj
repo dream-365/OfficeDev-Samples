@@ -62,12 +62,14 @@
     <Content Include="App\Controllers\accountCtrl.js" />
     <Content Include="App\Controllers\contactsCtrl.js" />
     <Content Include="App\Controllers\homeCtrl.js" />
+    <Content Include="App\Controllers\mailsCtrl.js" />
     <Content Include="App\Controllers\mainCtrl.js" />
     <Content Include="App\Services\NotificationService.js" />
     <Content Include="App\Services\O365Services.js" />
     <Content Include="App\Services\OfficeClientService.js" />
     <Content Include="App\Views\contacts.html" />
     <Content Include="App\Views\home.html" />
+    <Content Include="App\Views\mails.html" />
     <Content Include="Content\basic.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

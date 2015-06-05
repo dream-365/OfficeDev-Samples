@@ -38,8 +38,8 @@
                 <!-- The bootstrap will not hide when item selected, trigger the click event to force hide -->
                 <ul class="nav navbar-nav" onclick="triggerNavClick()">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
                     <li><a href="#contacts">Contacts</a></li>
+                    <li><a href="#mails">Mails</a></li>
                     <li ng-controller="accountCtrl">
                         <a href="#" ng-click="login()" ng-hide="userInfo.isAuthenticated">Login</a>
                         <a href="#" ng-click="logout()" ng-show="userInfo.isAuthenticated">Logout</a>
@@ -71,6 +71,7 @@
             <script src="App/Controllers/accountCtrl.js"></script>
             <script src="App/Controllers/homeCtrl.js"></script>
             <script src="App/Controllers/contactsCtrl.js"></script>
+            <script src="App/Controllers/mailsCtrl.js"></script>
         </div>
     </footer>
     <div id="overlay" style="display:none;">

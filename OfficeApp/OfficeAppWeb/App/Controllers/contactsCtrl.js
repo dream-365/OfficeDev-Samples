@@ -1,18 +1,15 @@
 ﻿(function () {
-    app.controller('contactsCtrl', ['$scope', 'o365ApiSvc', 'notificationSvc', function ($scope, o365ApiSvc, notificationSvc) {
+    app.controller('contactsCtrl', ['$scope', 'o365ApiSvc', 'notificationSvc', '$officeSvrvice', function ($scope, o365ApiSvc, notificationSvc, $officeSvrvice) {
         $scope.getContacts = function () {
             o365ApiSvc.getContacts()
                        .success(function (data, status, headers, config) {
-                           var list = '';
+                           var rows = [];
 
-                           for(var i = 0; i < data.value.length; i++)
-                           {
-                               list += data.value[i].DisplayName + ', ';
+                           for (var i = 0; i < data.value.length; i++) {
+                               rows.push([data.value[i].DisplayName, data.value[i].EmailAddresses[0].Address]);
                            }
 
-                           list = list.substring(0, list.length - 2);
-
-                           notificationSvc.info('Contacts: ' + list);
+                           $officeSvrvice.insertDataTable(['Name', 'E-mail'], rows);
                        });
         }
     }]);

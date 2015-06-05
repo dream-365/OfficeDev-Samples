@@ -10,6 +10,21 @@
 
                 return deferred.promise;
             },
+            insertDataTable: function (headers, rows) {
+                var table = new Office.TableData();
+
+                table.headers = headers;
+                table.rows = rows;
+
+                var deferred = $q.defer();
+
+                Office.context.document.setSelectedDataAsync(table, { coercionType: "table" },
+                    function (asyncResult) {
+                        deferred.resolve(asyncResult);
+                    });
+
+                return deferred.promise;
+            },
             getSelectedData: function (coercionType) {
                 var deferred = $q.defer();
 
