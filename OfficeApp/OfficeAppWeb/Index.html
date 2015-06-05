@@ -50,7 +50,7 @@
     </nav>
 
     <div class="container">
-        <div class="starter-template" ng-view>
+        <div ng-view>
 
         </div>
     </div><!-- /.container -->
@@ -67,10 +67,15 @@
             <script src="App/App.js"></script>
             <script src="App/Services/OfficeClientService.js"></script>
             <script src="App/Services/O365Services.js"></script>
+            <script src="App/Services/NotificationService.js"></script>
             <script src="App/Controllers/accountCtrl.js"></script>
             <script src="App/Controllers/homeCtrl.js"></script>
             <script src="App/Controllers/contactsCtrl.js"></script>
         </div>
     </footer>
+    <div id="overlay" style="display:none;">
+        <div class="overlay-backgroud">
+        </div>
+    </div>
 </body>
 </html>

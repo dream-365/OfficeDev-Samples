@@ -3,7 +3,7 @@
 (function () {
     "use strict";
 
-    app.controller('homeCtrl', ['$scope', '$officeSvrvice', 'o365ApiSvc', function ($scope, $officeSvrvice, o365ApiSvc) {
+    app.controller('homeCtrl', ['$scope', '$officeSvrvice', 'o365ApiSvc', 'notificationSvc', function ($scope, $officeSvrvice, o365ApiSvc, notificationSvc) {
         $scope.selection = '[display the select data here]';
 
         $scope.getSelectedData = function () {
@@ -11,11 +11,13 @@
                 if (result.status === Office.AsyncResultStatus.Succeeded) {
                     $scope.selection = result.value;
 
-                    util.showNotification('The selected text is:', '"' + result.value + '"');
+                    notificationSvc.info('The selected text is:' + '"' + result.value + '"');
                 } else {
-                    util.showNotification('Error:', result.error.message);
+
+                    notificationSvc.danger(result.error.message);
                 }
             });
         }
+
     }]);
 })();

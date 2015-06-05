@@ -7,9 +7,6 @@
     util.initialize = function () {
     };
 
-    util.showNotification = function () {
-    };
-
     return util;
 })();
 
@@ -22,7 +19,6 @@ Office.initialize = function (reason) {
 var app = angular.module('officeAddin', ['ngRoute', 'AdalAngular']);
 
 app.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $httpProvider, adalProvider) {
-
     $routeProvider.when("/home", {
         controller: "homeCtrl",
         templateUrl: "/App/Views/Home.html"
