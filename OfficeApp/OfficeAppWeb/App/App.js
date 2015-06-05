@@ -5,26 +5,9 @@
 
     // Common initialization function (to be called from each page)
     util.initialize = function () {
-        $('body').append(
-            '<div id="notification-message">' +
-                '<div class="padding">' +
-                    '<div id="notification-message-close"></div>' +
-                    '<div id="notification-message-header"></div>' +
-                    '<div id="notification-message-body"></div>' +
-                '</div>' +
-            '</div>');
+    };
 
-        $('#notification-message-close').click(function () {
-            $('#notification-message').hide();
-        });
-
-
-        // After initialization, expose a common notification function
-        util.showNotification = function (header, text) {
-            $('#notification-message-header').text(header);
-            $('#notification-message-body').text(text);
-            $('#notification-message').slideDown('fast');
-        };
+    util.showNotification = function () {
     };
 
     return util;
@@ -32,7 +15,7 @@
 
 Office.initialize = function (reason) {
     $(document).ready(function () {
-        util.initialize();
+        util.initialize();    
     });
 };
 
@@ -40,10 +23,13 @@ var app = angular.module('officeAddin', ['ngRoute', 'AdalAngular']);
 
 app.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $httpProvider, adalProvider) {
 
-    $routeProvider.when("/Home", {
+    $routeProvider.when("/home", {
         controller: "homeCtrl",
-        templateUrl: "/App/Views/Home.html",
-    }).otherwise({ redirectTo: "/Home" });
+        templateUrl: "/App/Views/Home.html"
+    }).when('/contacts', {
+        controller: "contactsCtrl",
+        templateUrl: "/App/Views/contacts.html"
+    }).otherwise({ redirectTo: "/home" });
 
     var endpoints = {
         // Map the location of a request to an API to a the identifier of the associated resource
@@ -65,35 +51,6 @@ app.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvide
 
 }]);
 
-app.factory('$officeSvrvice', ['$q', function ($q) {
-    return {
-        getFileProperties: function () {
-            var deferred = $q.defer();
-
-            Office.context.document.getFilePropertiesAsync(function (asyncResult) {
-                deferred.resolve(asyncResult);
-            });
-
-            return deferred.promise;
-        },
-        getSelectedData: function (coercionType) {
-            var deferred = $q.defer();
-
-            Office.context.document.getSelectedDataAsync(coercionType, function (asyncResult) {
-                deferred.resolve(asyncResult);
-            });
-
-            return deferred.promise;
-        }
-    }
-}]);
 
 
-app.factory('o365ApiSvc', ['$http', function ($http) {
-    return {
-        getContacts: function () {
-            return $http.get('https://outlook.office365.com/api/v1.0/me/contacts');
-        }
-    };
-}]);
 
