@@ -6,6 +6,11 @@
     app.controller('homeCtrl', ['$scope', '$officeSvrvice', 'o365ApiSvc', 'notificationSvc', function ($scope, $officeSvrvice, o365ApiSvc, notificationSvc) {
         $scope.selection = '[display the select data here]';
 
+        $officeSvrvice.getContext().then(function (data) {
+            $scope.contentLanguage = data.contentLanguage;
+            $scope.displayLanguage = data.displayLanguage;
+        });
+
         $scope.getSelectedData = function () {
             $officeSvrvice.getSelectedData(Office.CoercionType.Text).then(function (result) {
                 if (result.status === Office.AsyncResultStatus.Succeeded) {

@@ -67,6 +67,7 @@
     <Content Include="App\Services\NotificationService.js" />
     <Content Include="App\Services\O365Services.js" />
     <Content Include="App\Services\OfficeClientService.js" />
+    <Content Include="App\Util.js" />
     <Content Include="App\Views\contacts.html" />
     <Content Include="App\Views\home.html" />
     <Content Include="App\Views\mails.html" />

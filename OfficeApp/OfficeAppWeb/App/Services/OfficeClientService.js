@@ -33,6 +33,25 @@
                 });
 
                 return deferred.promise;
+            },
+            getContext: function () {
+                var deferred = $q.defer();
+
+                var waitObj = new waitObject(Office);
+
+                waitObj.when(function (o) {
+                    return typeof o.context !== 'undefined'
+                })
+                .then(function (o) {
+                    var ctx = {
+                        contentLanguage: o.context.contentLanguage,
+                        displayLanguage: o.context.displayLanguage
+                    };
+
+                    deferred.resolve(ctx);
+                }).start();
+
+                return deferred.promise;
             }
         }
     }]);

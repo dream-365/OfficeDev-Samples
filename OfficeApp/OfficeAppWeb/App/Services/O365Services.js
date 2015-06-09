@@ -8,7 +8,7 @@
                 return $http.post('https://outlook.office365.com/api/v1.0/me/sendmail', mail);
             },
             createDraft: function (draft) {
-                return $http.post('https://outlook.office365.com/api/v1.0/me/folders/inbox/messages');
+                return $http.post('https://outlook.office365.com/api/v1.0/me/folders/inbox/messages' ,draft);
             }
         };
     }]);
