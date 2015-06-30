@@ -17,7 +17,7 @@
     <Capability Name="Document" />
   </Capabilities>
   <DefaultSettings>
-    <SourceLocation DefaultValue="~remoteAppUrl/Index.html" />
+    <SourceLocation DefaultValue="~remoteAppUrl/winjs.html" />
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
 </OfficeApp>
