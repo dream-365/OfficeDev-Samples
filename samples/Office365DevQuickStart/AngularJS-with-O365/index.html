@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>O365 Connect sample</title>
+  <base href="/">
+
+  <!-- Third party dependencies. -->
+  <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.css">
+  <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.js"></script>
+
+  <!-- App code. -->
+  <script src="Scripts/config.js"></script>
+  <script src="Scripts/app.js"></script>
+  <script src="Scripts/controllers/mainController.js"></script>
+  <link rel="stylesheet" href="Content/styles.css">
+
+  <!-- ADAL JS files. -->
+  <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.7/js/adal.min.js"></script>
+  <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.7/js/adal-angular.min.js"></script>
+</head>
+
+<body class="ms-Grid">
+  <div ng-view></div>
+</body>
+
+</html>
