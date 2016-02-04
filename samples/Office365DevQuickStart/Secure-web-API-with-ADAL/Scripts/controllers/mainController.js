@@ -14,6 +14,7 @@
     // Methods
     vm.connect = connect;
     vm.disconnect = disconnect;
+    vm.callWebApi = callWebApi;
 
     
     /////////////////////////////////////////
@@ -51,5 +52,20 @@
       $log.debug('Disconnecting from Azure AD');
       adalAuthenticationService.logOut();
     };
+
+    function callWebApi() {
+        var request = {
+            method: 'GET',
+            url: '/api/values'
+        };
+
+        // Execute the HTTP request. 
+        $http(request)
+        .then(function (response) {
+
+        }, function (error) {
+
+        });
+    }
   };
 })();
