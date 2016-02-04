@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWP-with-O365", "UWP-with-O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console-with-O365", "Console-with-O365\Console-with-O365.csproj", "{2D76F375-55BC-4A41-B301-3EB6DB5077E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Secure-web-API-with-ADAL", "Secure-web-API-with-ADAL\Secure-web-API-with-ADAL.csproj", "{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,22 @@ Global
 		{2D76F375-55BC-4A41-B301-3EB6DB5077E3}.Release|x64.Build.0 = Release|Any CPU
 		{2D76F375-55BC-4A41-B301-3EB6DB5077E3}.Release|x86.ActiveCfg = Release|Any CPU
 		{2D76F375-55BC-4A41-B301-3EB6DB5077E3}.Release|x86.Build.0 = Release|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Debug|x64.Build.0 = Debug|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Debug|x86.Build.0 = Debug|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Release|ARM.Build.0 = Release|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Release|x64.ActiveCfg = Release|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Release|x64.Build.0 = Release|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
