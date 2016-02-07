@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console-with-O365", "Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Secure-web-API-with-ADAL", "Secure-web-API-with-ADAL\Secure-web-API-with-ADAL.csproj", "{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scenarios", "scenarios", "{A83F91E4-7923-49A0-AB6F-ADCC28185D5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "concepts", "concepts", "{7129B35D-4E5F-493E-A6E5-E67ED86ECF78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,5 +98,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F335122-1D01-4356-8644-A8AFF27C81C8} = {A83F91E4-7923-49A0-AB6F-ADCC28185D5A}
+		{70CCAD1E-0111-4E0F-AEE2-2BB1757CF2AB} = {A83F91E4-7923-49A0-AB6F-ADCC28185D5A}
+		{2D76F375-55BC-4A41-B301-3EB6DB5077E3} = {A83F91E4-7923-49A0-AB6F-ADCC28185D5A}
+		{8C863F68-9C7E-42AD-B4B2-BA58AE7458DA} = {7129B35D-4E5F-493E-A6E5-E67ED86ECF78}
 	EndGlobalSection
 EndGlobal
