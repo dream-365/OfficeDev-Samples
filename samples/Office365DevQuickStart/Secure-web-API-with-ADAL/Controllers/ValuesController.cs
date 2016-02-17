@@ -20,6 +20,8 @@ namespace Secure_web_API_with_ADAL.Controllers
 
             Claim subject = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier);
 
+            // JWT Json Web Token
+
             return new string[] { "value1", "value2" };
         }
 
