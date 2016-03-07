@@ -16,6 +16,21 @@ namespace Console_with_O365
             _token = token;
         }
 
+        public async Task SearchMessageAsync(string search)
+        {
+            var uri = "https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages?$search=" + "\"NOT from:msonlineservicesteam@email.microsoftonline.com AND NOT to:Support-jec@hotmail.com\"";
+
+            var httpClient = new HttpClient();
+
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _token);
+
+            var result = await httpClient.GetAsync(uri);
+
+            var text = await result.Content.ReadAsStringAsync();
+
+            Console.WriteLine(text);
+        }
+
         public async Task GetMessagesAsync()
         {
             var uri = "https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages";

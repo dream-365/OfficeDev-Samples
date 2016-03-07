@@ -88,7 +88,7 @@ namespace Console_with_O365 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [application_secret].
+        ///   Looks up a localized string similar to wV6RJx2qf4w80+r+djsfEn0grP3Xrgwgp6w13QlQFl8=.
         /// </summary>
         internal static string ClientSecret {
             get {

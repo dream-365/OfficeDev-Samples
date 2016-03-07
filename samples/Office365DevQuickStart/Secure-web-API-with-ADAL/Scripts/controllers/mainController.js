@@ -15,7 +15,6 @@
     vm.connect = connect;
     vm.disconnect = disconnect;
     vm.callWebApi = callWebApi;
-
     
     /////////////////////////////////////////
     // End of exposed properties and methods.
