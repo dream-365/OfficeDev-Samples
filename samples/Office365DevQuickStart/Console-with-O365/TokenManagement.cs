@@ -1,40 +1,22 @@
 ﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_with_O365
 {
-    public class TokenManagement
+    public class ApplicationTokenManagement
     {
-        public string GetTokenForApplication()
+        public string AcquireToken(string resource)
         {
             AuthenticationContext authenticationContext = new AuthenticationContext(Settings.AuthString, false);
 
             // Config for OAuth client credentials 
             ClientCredential clientCred = new ClientCredential(Settings.ClientId, Settings.ClientSecret);
 
-            AuthenticationResult authenticationResult = authenticationContext.AcquireToken(Settings.ResourceUrlOfGraph, clientCred);
+            AuthenticationResult authenticationResult = authenticationContext.AcquireToken(resource, clientCred);
 
             string token = authenticationResult.AccessToken;
 
             return token;
         }
 
-        public string GetTokenForUser()
-        {
-            var redirectUri = new Uri(Settings.RedirectUri);
-
-            AuthenticationContext authenticationContext = new AuthenticationContext(Settings.AuthString, false);
-
-            AuthenticationResult userAuthnResult = authenticationContext.AcquireToken(Settings.ResourceUrlOfExchangeOnline,
-                Settings.ClientIdForUserAuth, redirectUri, PromptBehavior.Always);
-
-            var token = userAuthnResult.AccessToken;
-
-            return token;
-        }
     }
 }

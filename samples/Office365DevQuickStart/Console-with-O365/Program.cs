@@ -7,24 +7,23 @@ namespace Console_with_O365
     {
         static void Main(string[] args)
         {
-            var tmgr = new UserTokenManagement();
+            var tmgr = new ApplicationTokenManagement();
 
             var token = tmgr.AcquireToken(Settings.ResourceUrlOfGraph);
 
-            var api = new Graph.GraphMailAPI(token);
+            var api = new Graph.GraphCalendarAPI(token);
 
-            var task = api.SearchAsync("NOT from:support-jec@hotmail.com AND NOT to:jec@officedevgroup.onmicrosoft.com AND NOT cc:support-jec@hotmail.com AND NOT bcc:jec@microsoft.com");
+            JObject body = new JObject
+            {
+                {"subject", "Create from Office 365 API"},
+                {"start", new JObject { { "DateTime", "2016-03-09T00:00:00"}, { "TimeZone", "China Standard Time" } } },
+                {"end", new JObject { { "DateTime", "2016-03-10T00:00:00"}, { "TimeZone", "China Standard Time" } } },
+                {"isAllDay", true }
+            };
+
+            var task = api.CreateEventAsync(body, "jec@microsoft320.onmicrosoft.com");
 
             task.Wait();
-
-            var result = task.Result;
-
-            var mails = result.GetValue("value") as JArray;
-
-            foreach(JObject mail in mails)
-            {
-               Console.WriteLine(mail.GetValue("subject").Value<string>());
-            }
         }
     }
 }

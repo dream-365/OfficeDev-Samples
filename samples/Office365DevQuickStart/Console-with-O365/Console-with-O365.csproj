@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="TokenManagement.cs" />
     <Compile Include="UserTokenManagement.cs" />
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
