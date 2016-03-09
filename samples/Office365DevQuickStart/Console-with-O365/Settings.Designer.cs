@@ -88,7 +88,7 @@ namespace Console_with_O365 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to wV6RJx2qf4w80+r+djsfEn0grP3Xrgwgp6w13QlQFl8=.
+        ///   Looks up a localized string similar to .
         /// </summary>
         internal static string ClientSecret {
             get {
@@ -106,11 +106,20 @@ namespace Console_with_O365 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://outlook.office.com.
+        /// </summary>
+        internal static string ResourceUrlOfExchangeOnline {
+            get {
+                return ResourceManager.GetString("ResourceUrlOfExchangeOnline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://graph.microsoft.com.
         /// </summary>
-        internal static string ResourceUrl {
+        internal static string ResourceUrlOfGraph {
             get {
-                return ResourceManager.GetString("ResourceUrl", resourceCulture);
+                return ResourceManager.GetString("ResourceUrlOfGraph", resourceCulture);
             }
         }
     }

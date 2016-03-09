@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Console_with_O365
 {
-    public class MessageOperations
+    public class GraphMessageOperations
     {
         private string _token;
 
-        public MessageOperations(string token)
+        public GraphMessageOperations(string token)
         {
             _token = token;
         }

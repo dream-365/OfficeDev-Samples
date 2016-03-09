@@ -16,7 +16,7 @@ namespace Console_with_O365
             // Config for OAuth client credentials 
             ClientCredential clientCred = new ClientCredential(Settings.ClientId, Settings.ClientSecret);
 
-            AuthenticationResult authenticationResult = authenticationContext.AcquireToken(Settings.ResourceUrl, clientCred);
+            AuthenticationResult authenticationResult = authenticationContext.AcquireToken(Settings.ResourceUrlOfGraph, clientCred);
 
             string token = authenticationResult.AccessToken;
 
@@ -29,7 +29,7 @@ namespace Console_with_O365
 
             AuthenticationContext authenticationContext = new AuthenticationContext(Settings.AuthString, false);
 
-            AuthenticationResult userAuthnResult = authenticationContext.AcquireToken(Settings.ResourceUrl,
+            AuthenticationResult userAuthnResult = authenticationContext.AcquireToken(Settings.ResourceUrlOfExchangeOnline,
                 Settings.ClientIdForUserAuth, redirectUri, PromptBehavior.Always);
 
             var token = userAuthnResult.AccessToken;

@@ -1,10 +1,5 @@
-﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_with_O365
 {
@@ -12,15 +7,24 @@ namespace Console_with_O365
     {
         static void Main(string[] args)
         {
-            var tmgr = new TokenManagement();
+            var tmgr = new UserTokenManagement();
 
-            var token = tmgr.GetTokenForUser();
+            var token = tmgr.AcquireToken(Settings.ResourceUrlOfGraph);
 
-            var operatinos = new MessageOperations(token);
+            var api = new Graph.GraphMailAPI(token);
 
-            var task = operatinos.GetMessagesAsync();
+            var task = api.SearchAsync("NOT from:support-jec@hotmail.com AND NOT to:jec@officedevgroup.onmicrosoft.com AND NOT cc:support-jec@hotmail.com AND NOT bcc:jec@microsoft.com");
 
             task.Wait();
+
+            var result = task.Result;
+
+            var mails = result.GetValue("value") as JArray;
+
+            foreach(JObject mail in mails)
+            {
+               Console.WriteLine(mail.GetValue("subject").Value<string>());
+            }
         }
     }
 }

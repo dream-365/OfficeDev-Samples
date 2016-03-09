@@ -127,13 +127,16 @@
     <value>24bb1725-54d9-4190-b58c-ba5347fb336e</value>
   </data>
   <data name="ClientSecret" xml:space="preserve">
-    <value>wV6RJx2qf4w80+r+djsfEn0grP3Xrgwgp6w13QlQFl8=</value>
+    <value />
     <comment>Application Secret</comment>
   </data>
   <data name="RedirectUri" xml:space="preserve">
     <value>http://localhost</value>
   </data>
-  <data name="ResourceUrl" xml:space="preserve">
+  <data name="ResourceUrlOfExchangeOnline" xml:space="preserve">
+    <value>https://outlook.office.com</value>
+  </data>
+  <data name="ResourceUrlOfGraph" xml:space="preserve">
     <value>https://graph.microsoft.com</value>
   </data>
 </root>
