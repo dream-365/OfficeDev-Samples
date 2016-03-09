@@ -17,6 +17,5 @@ namespace Console_with_O365
 
             return token;
         }
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Console_with_O365
+namespace Console_with_O365.O365
 {
     public class OutlookCalendarAPI : BaseApi
     {
