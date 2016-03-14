@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace Console_with_O365
+namespace Console_with_O365.Scenarios
 {
     public class CreateFullDayEventForUser : Scenario
     {

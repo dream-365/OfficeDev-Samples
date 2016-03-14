@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseApi.cs" />
-    <Compile Include="CreateFullDayEventForUser.cs" />
+    <Compile Include="Scenarios\CreateFullDayEventForUser.cs" />
     <Compile Include="Graph\GraphCalendarAPI.cs" />
     <Compile Include="Graph\GraphMailAPI.cs" />
     <Compile Include="O365\OutlookCalendarAPI.cs" />
@@ -70,8 +70,8 @@
       <DependentUpon>Settings.resx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationTokenManagement.cs" />
-    <Compile Include="SubscribeOutlookNotifications.cs" />
-    <Compile Include="SyncOutlookEvents.cs" />
+    <Compile Include="Scenarios\SubscribeOutlookNotifications.cs" />
+    <Compile Include="Scenarios\SyncOutlookEvents.cs" />
     <Compile Include="UserTokenManagement.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
