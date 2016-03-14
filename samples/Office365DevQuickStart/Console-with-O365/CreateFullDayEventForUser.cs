@@ -2,9 +2,9 @@
 
 namespace Console_with_O365
 {
-    public class CreateFullDayEventForUser
+    public class CreateFullDayEventForUser : Scenario
     {
-        public void Run()
+        public override void Run()
         {
             var tmgr = new ApplicationTokenManagement();
 

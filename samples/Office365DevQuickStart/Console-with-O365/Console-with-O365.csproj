@@ -60,14 +60,18 @@
     <Compile Include="Graph\GraphCalendarAPI.cs" />
     <Compile Include="Graph\GraphMailAPI.cs" />
     <Compile Include="O365\OutlookCalendarAPI.cs" />
+    <Compile Include="O365\OutlookNotificationsAPI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenario.cs" />
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Settings.resx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationTokenManagement.cs" />
+    <Compile Include="SubscribeOutlookNotifications.cs" />
+    <Compile Include="SyncOutlookEvents.cs" />
     <Compile Include="UserTokenManagement.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
