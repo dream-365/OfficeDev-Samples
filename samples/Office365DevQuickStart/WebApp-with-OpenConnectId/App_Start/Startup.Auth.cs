@@ -38,6 +38,15 @@ namespace WebApp_with_OpenConnectId
                     PostLogoutRedirectUri = postLogoutRedirectUri,
                     Notifications = new OpenIdConnectAuthenticationNotifications
                     {
+                        SecurityTokenReceived = context => {
+
+                            var userId = context.ProtocolMessage.UserId;
+
+                            var userName = context.ProtocolMessage.Username;
+
+                            return Task.FromResult(0);
+                        },
+
                         AuthenticationFailed = context =>
                         {
                             context.HandleResponse();

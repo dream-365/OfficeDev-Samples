@@ -20,7 +20,7 @@ namespace Console_with_O365.Scenarios
                 {"isAllDay", true }
             };
 
-            var task = api.CreateEventAsync(body, "user@yourcompany.com");
+            var task = api.CreateEventAsync(body, "jec@microsoft320.microsoft.com");
 
             task.Wait();
         }

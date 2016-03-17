@@ -7,7 +7,9 @@ namespace Console_with_O365
     {
         static void Main(string[] args)
         {
+            var sce = new Scenarios.SyncOutlookEvents();
 
+            sce.Run();
         }
     }
 }
