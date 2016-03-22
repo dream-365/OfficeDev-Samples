@@ -22,22 +22,17 @@ namespace OAuth2_basic
             var tokenResponse = auth.RequestAccessToken(
                 code: codeResponse.GetValue("code").Value<string>(), resource: "https://outlook.office.com");
 
-            Console.WriteLine("Access Token:");
+            Console.WriteLine("access token:");
+
             Console.WriteLine(tokenResponse);
 
             var accessToken = tokenResponse.GetValue("access_token").Value<string>();
 
-            var parts = accessToken.Split('.');
+            var validator = new JsonWebTokenValidator();
 
-            var header = Utility.DecodeBase64String(parts[0]);
+            var jwt = validator.Validate(accessToken);
 
-            var data = Utility.DecodeBase64String(parts[1]);
-
-            Console.WriteLine("JWT header:");
-            Console.WriteLine(JsonConvert.DeserializeObject(header).ToString());
-
-            Console.WriteLine("JWT data:");
-            Console.WriteLine(JsonConvert.DeserializeObject(data).ToString());
+            Console.WriteLine(JsonConvert.SerializeObject(jwt.Payload, Formatting.Indented));
 
             Console.ReadLine();
         }

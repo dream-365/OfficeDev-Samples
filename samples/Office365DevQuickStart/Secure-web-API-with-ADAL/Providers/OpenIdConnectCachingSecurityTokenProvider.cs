@@ -81,7 +81,9 @@ namespace Secure_web_API_with_ADAL.Providers
             try
             {
                 OpenIdConnectConfiguration config = _configManager.GetConfigurationAsync().Result;
+
                 _issuer = config.Issuer;
+
                 _tokens = config.SigningTokens;
             }
             finally

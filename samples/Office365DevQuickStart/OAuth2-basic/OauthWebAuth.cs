@@ -1,19 +1,15 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Web;
-using System.Windows.Forms;
 
 namespace OAuth2_basic
 {
     public class OauthWebAuthHelper
     {
         private OauthConfiguration _configuration;
-
-
 
         public OauthWebAuthHelper(OauthConfiguration configuration)
         {
