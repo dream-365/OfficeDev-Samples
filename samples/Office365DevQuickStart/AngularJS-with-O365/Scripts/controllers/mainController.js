@@ -21,6 +21,7 @@
     vm.connect = connect;
     vm.disconnect = disconnect;
     vm.sendMail = sendMail;
+    vm.sendExt = sendExt;
     
     /////////////////////////////////////////
     // End of exposed properties and methods.
@@ -60,6 +61,12 @@
       $log.debug('Disconnecting from Office 365...');
       adalAuthenticationService.logOut();
     };
+
+
+    function sendExt()
+    {
+        $http.get('http://analyzeit.azurewebsites.net/api/repository');
+    }
     
     /**
      * Send an email to the specified email address.

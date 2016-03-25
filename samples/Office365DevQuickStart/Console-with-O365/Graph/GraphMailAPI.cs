@@ -24,5 +24,16 @@ namespace Console_with_O365.Graph
 
             return Deserialize(result);
         }
+
+        public async Task<JObject> GetMessages()
+        {
+            var uri = string.Format("{0}/{1}", BASE_URI, "me/mailFolders/Inbox/messages");
+
+            var response = await _httpClient.GetAsync(uri);
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            return Deserialize(result);
+        }
     }
 }

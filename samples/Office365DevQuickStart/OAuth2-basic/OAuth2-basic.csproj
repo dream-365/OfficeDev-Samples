@@ -59,7 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthorizationCodeGrantFlow.cs" />
+    <Compile Include="CreateAndSignJsonWebToken.cs" />
     <Compile Include="JsonWebTokenValidator.cs" />
+    <Compile Include="Keys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Keys.resx</DependentUpon>
+    </Compile>
+    <Compile Include="OAuthBasic.cs" />
     <Compile Include="OauthConfiguration.cs" />
     <Compile Include="OauthWebAuth.cs" />
     <Compile Include="Program.cs" />
@@ -73,6 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Keys.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Keys.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
