@@ -14,13 +14,7 @@ namespace OAuth2_basic
         {
             var auth = new OauthWebAuthHelper(oauth);
 
-            var codeResponse = auth.RequestAuthorizationCode();
-
-            Console.WriteLine("Authorization Code:");
-            Console.WriteLine(codeResponse);
-
-            var tokenResponse = auth.RequestAccessToken(
-                code: codeResponse.GetValue("code").Value<string>(), resource: "https://outlook.office.com");
+            var tokenResponse = auth.AcquireTokenWithResource(resource: "https://outlook.office.com");
 
             Console.WriteLine("access token:");
 

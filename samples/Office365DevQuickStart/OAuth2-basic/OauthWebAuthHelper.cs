@@ -11,6 +11,10 @@ namespace OAuth2_basic
     {
         private OauthConfiguration _configuration;
 
+        private const string OAUTH2_AUTHORIZE_V1_SUFFIX = @"/oauth2/";
+
+        private const string OAUTH2_AUTHORIZE_SUFFIX   = @"/oauth2/v2.0";
+
         public OauthWebAuthHelper(OauthConfiguration configuration)
         {
             _configuration = configuration;
@@ -20,13 +24,13 @@ namespace OAuth2_basic
         {
             var dialog = new WebBrowserDialog();
 
-            dialog.Open(LogOutUrl);
+            dialog.Open(string.Format("{0}/logout", EndPointUrl));
         }
 
-        protected string RequestAuthorizationCodeUrl {
+        protected string EndPointUrl {
             get
             {
-                return string.Format("{0}/{1}/oauth2/authorize", _configuration.Authority, _configuration.Tenant);
+                return string.Format("{0}/{1}/{2}", _configuration.Authority, _configuration.Tenant, OAUTH2_AUTHORIZE_V1_SUFFIX);
             }
         }
 
@@ -38,15 +42,8 @@ namespace OAuth2_basic
             }
         }
 
-        protected string LogOutUrl
-        {
-            get
-            {
-                return string.Format("{0}/{1}/oauth2/logout", _configuration.Authority, _configuration.Tenant);
-            }
-        }
         
-        public JObject RequestAuthorizationCode()
+        public JObject GetAuthorizationCode()
         {
             JObject response = new JObject();
 
@@ -58,7 +55,7 @@ namespace OAuth2_basic
                     { "prompt", "login"} 
                 };
 
-            var requestUrl = RequestAuthorizationCodeUrl + "?" + BuildQueryString(parameters);
+            var requestUrl = string.Format("{0}/authorize?{1}", EndPointUrl, BuildQueryString(parameters));
 
             var dialog = new WebBrowserDialog();
 
@@ -81,8 +78,18 @@ namespace OAuth2_basic
             return response;
         }
 
-        public JObject RequestAccessToken(string code, string resource)
+
+        public JObject GetAuthorizationCode(string scope)
         {
+            throw new System.NotImplementedException();
+        }
+
+        public JObject AcquireTokenWithResource(string resource)
+        {
+            var codeResponse = GetAuthorizationCode();
+
+            var code = codeResponse.GetValue("code").Value<string>();
+
             var parameters = new Dictionary<string, string>
                 {
                     { "resource", resource},
@@ -90,24 +97,26 @@ namespace OAuth2_basic
                     { "code",  code},
                     { "grant_type", "authorization_code" },
                     { "redirect_uri", _configuration.RedirectURI},
-                    
                 };
 
             var client = new HttpClient();
 
             var content = new StringContent(BuildQueryString(parameters), Encoding.GetEncoding("utf-8"), "application/x-www-form-urlencoded");
 
-            var task = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", content);
+            var url = string.Format("{0}/token", EndPointUrl);
 
-            task.Wait();
-
-            var response = task.Result;
+            var response = client.PostAsync(url, content).Result;
 
             var text = response.Content.ReadAsStringAsync().Result;
 
             return JsonConvert.DeserializeObject(text) as JObject;
         }
 
+
+        public JObject AcquireTokenWithScope(string scope)
+        {
+            throw new System.NotImplementedException();
+        }
 
         private string BuildQueryString(IDictionary<string, string> parameters)
         {

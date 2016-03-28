@@ -68,7 +68,7 @@
     </Compile>
     <Compile Include="OAuthBasic.cs" />
     <Compile Include="OauthConfiguration.cs" />
-    <Compile Include="OauthWebAuth.cs" />
+    <Compile Include="OauthWebAuthHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.cs" />
