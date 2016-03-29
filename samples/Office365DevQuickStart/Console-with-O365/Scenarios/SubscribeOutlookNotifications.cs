@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Console_with_O365
+namespace Console_with_O365.Scenarios
 {
     public class SubscribeOutlookNotifications : Scenario
     {
@@ -12,7 +12,7 @@ namespace Console_with_O365
 
             var api = new O365.OutlookNotificationsAPI(token);
 
-            var task = api.Subscribe("https://outlook.office.com/api/v2.0/me/events", "Created");
+            var task = api.Subscribe("me/events", "Created, Updated, Deleted");
 
             task.Wait();
 

@@ -58,6 +58,7 @@
     <Compile Include="BaseApi.cs" />
     <Compile Include="Graph\GraphUserAPI.cs" />
     <Compile Include="O365\OutlookMessageAPI.cs" />
+    <Compile Include="O365\ServiceDiscoveryAPI.cs" />
     <Compile Include="Scenarios\CreateAppointment.cs" />
     <Compile Include="Scenarios\CreateFullDayEventForUser.cs" />
     <Compile Include="Graph\GraphCalendarAPI.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Scenario.cs" />
     <Compile Include="Scenarios\GetAllMessages.cs" />
     <Compile Include="Scenarios\GetAllMessagesThroughGraph.cs" />
+    <Compile Include="Scenarios\ListOffice365Services.cs" />
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -7,7 +7,7 @@ namespace Console_with_O365
     {
         static void Main(string[] args)
         {
-            var sce = new Scenarios.GetAllMessages();
+            var sce = new Scenarios.SubscribeOutlookNotifications();
 
             sce.Run();
         }
