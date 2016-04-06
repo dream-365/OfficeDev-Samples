@@ -24,11 +24,24 @@ namespace Console_with_O365
         }
 
 
-        protected async Task<JObject> GetAsync(string url)
+        protected async Task<JObject> GetAsync(string url, IDictionary<string, string> headers = null)
         {
+            if(headers != null)
+            {
+                foreach(var header in headers)
+                {
+                    _httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+                }
+            }
+
             var result = await _httpClient.GetAsync(url);
 
             var text = await result.Content.ReadAsStringAsync();
+
+            foreach(var header in result.Headers)
+            {
+                Console.WriteLine("{0}:{1}", header.Key, string.Join(";", header.Value));
+            }
 
             return Deserialize(text);
         }

@@ -47,7 +47,7 @@ namespace Console_with_O365.O365
 
             var api = Api("me/calendarview?" + string.Join("&", list));
 
-            return GetAsync(api);
+            return GetAsync(api, new Dictionary<string, string> { { "Prefer", "odata.track-changes" } });
         }
 
         public Task<JObject> GetEventsAsync()

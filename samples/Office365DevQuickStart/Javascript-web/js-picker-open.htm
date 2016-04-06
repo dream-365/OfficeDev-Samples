@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="https://js.live.net/v7.0/OneDrive.js"></script>
+    <script type="text/javascript">
+      function launchOneDrivePicker(){
+          var odOptions = {
+              clientId: "f6eddbd9-e3bb-4610-9ebb-0fc31291ab1e",
+              action: "query",
+              multiSelect: true,
+              openInNewWindow: true,
+              advanced: {},
+              success: function (files) { /* success handler */ },
+              cancel: function () { /* cancel handler */ },
+              error: function (e) { /* error handler */ }
+          };
+
+        OneDrive.open(odOptions);
+      }
+    </script>
+</head>
+<body>
+    <button onclick="launchOneDrivePicker()">Open from OneDrive</button>
+</body>
+</html>

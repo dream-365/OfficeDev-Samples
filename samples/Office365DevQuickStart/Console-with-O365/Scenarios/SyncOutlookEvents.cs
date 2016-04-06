@@ -13,11 +13,10 @@ namespace Console_with_O365.Scenarios
 
             var api = new O365.OutlookCalendarAPI(token);
 
-            var task = api.SyncEventsAsync(new JObject { { "startDateTime", "2016-03-08T00:00:00Z" }, { "endDateTime", "2016-03-11T00:00:00Z" } });
-
-            task.Wait();
-
-            var result = task.Result;
+            var result = api.SyncEventsAsync(new JObject {
+                { "startDateTime", "2016-03-28T00:00:00Z" },
+                { "endDateTime", "2016-04-01T00:00:00Z" } })
+                .Result;
 
             Console.WriteLine(result.ToString());
         }
