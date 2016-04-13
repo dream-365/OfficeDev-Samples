@@ -150,6 +150,28 @@ namespace OAuth2_basic
         }
 
 
+        public JObject RefreshTokenWithResource(string refreshToken)
+        {
+            var parameters = new Dictionary<string, string>
+                {
+                    { "client_id", _configuration.ClientId },
+                    { "refresh_token",  refreshToken},
+                    { "grant_type", "refresh_token" }
+                };
+
+            var client = new HttpClient();
+
+            var content = new StringContent(BuildQueryString(parameters), Encoding.GetEncoding("utf-8"), "application/x-www-form-urlencoded");
+
+            var url = string.Format("{0}/token", EndPointUrl);
+
+            var response = client.PostAsync(url, content).Result;
+
+            var text = response.Content.ReadAsStringAsync().Result;
+
+            return JsonConvert.DeserializeObject(text) as JObject;
+        }
+
         public JObject AcquireTokenWithScope(string scope)
         {
             var codeResponse = GetAuthorizationCode(scope);

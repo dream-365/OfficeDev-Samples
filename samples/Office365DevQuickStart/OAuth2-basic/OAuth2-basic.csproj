@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="AuthorizationCodeGrantFlow.cs" />
     <Compile Include="CreateAndSignJsonWebToken.cs" />
+    <Compile Include="HowToRefreshToekn.cs" />
     <Compile Include="JsonWebTokenValidator.cs" />
     <Compile Include="Keys.Designer.cs">
       <AutoGen>True</AutoGen>

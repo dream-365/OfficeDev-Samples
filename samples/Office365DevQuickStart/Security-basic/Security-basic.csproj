@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsymmetricSignAndVerify.cs" />
+    <Compile Include="GetInfoOfCertificates.cs" />
     <Compile Include="Keys.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
