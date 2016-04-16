@@ -51,6 +51,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20622.1351, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +71,8 @@
     <Compile Include="InMemoryTokenCache.cs" />
     <Compile Include="O365\OutlookMessageAPI.cs" />
     <Compile Include="O365\ServiceDiscoveryAPI.cs" />
+    <Compile Include="OauthConfiguration.cs" />
+    <Compile Include="OauthWebServerSimulator.cs" />
     <Compile Include="Scenarios\CreateAppointment.cs" />
     <Compile Include="Scenarios\CreateFullDayEventForUser.cs" />
     <Compile Include="Graph\GraphCalendarAPI.cs" />
@@ -76,6 +85,7 @@
     <Compile Include="Scenarios\GetAllMessages.cs" />
     <Compile Include="Scenarios\GetAllMessagesThroughGraph.cs" />
     <Compile Include="Scenarios\ListOffice365Services.cs" />
+    <Compile Include="Scenarios\TroubleshootAcquireTokenSilentFailed.cs" />
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,6 +96,7 @@
     <Compile Include="Scenarios\SyncOutlookEvents.cs" />
     <Compile Include="UserTokenManagement.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="WebBrowserDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
