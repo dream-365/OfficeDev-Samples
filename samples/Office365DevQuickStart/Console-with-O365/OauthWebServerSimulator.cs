@@ -82,7 +82,7 @@ namespace Console_with_O365
                         response.Add(key, collection[key]);
                     }
 
-                    dialog.Close();
+                    // dialog.Close();
                 }
             });
 

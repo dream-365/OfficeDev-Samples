@@ -28,6 +28,8 @@ namespace Console_with_O365
 
             _browser.Navigated += WebBrowserNavigatedEventHandler;
 
+            _browser.Navigating += _browser_Navigating;
+
             _displayLoginForm = new Form();
 
             _displayLoginForm.SuspendLayout();
@@ -43,6 +45,10 @@ namespace Console_with_O365
             _displayLoginForm.ResumeLayout(false);
         }
 
+        private void _browser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+            System.Console.WriteLine(e.Url);
+        }
 
         public void OnNavigated(WebBrowserNavigatedEventHandler handler)
         {
@@ -51,7 +57,9 @@ namespace Console_with_O365
 
         protected void WebBrowserNavigatedEventHandler(object sender, WebBrowserNavigatedEventArgs e)
         {
-            if(_webBrowserNavigatedEventHandler != null)
+            System.Console.WriteLine(e.Url);
+
+            if (_webBrowserNavigatedEventHandler != null)
             {
                 _webBrowserNavigatedEventHandler.Invoke(sender, e);
             }

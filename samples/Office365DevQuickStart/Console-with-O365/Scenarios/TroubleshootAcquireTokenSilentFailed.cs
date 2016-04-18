@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tokens = System.IdentityModel.Tokens;
+using Microsoft.Office365.Discovery;
 
 namespace Console_with_O365.Scenarios
 {
@@ -33,7 +35,7 @@ namespace Console_with_O365.Scenarios
                 var idToken = response.Value<string>("id_token");
 
                 // use id token to authenticate the user (skip the validation here)
-                JwtSecurityToken jwt = new JwtSecurityToken(idToken);
+                Tokens.JwtSecurityToken jwt = new Tokens.JwtSecurityToken(idToken);
 
                 object uniquename;
                 object oid;
@@ -44,12 +46,34 @@ namespace Console_with_O365.Scenarios
                 var signInUserId = uniquename as string;
                 var userObjectId = oid as string;
 
-
                 var code = response.Value<string>("code");
 
-                // use code to acquire the access token
+                // use code to acquire the access token and cache in memory
+                var resource = "https://graph.windows.net";
 
+                var discoveryServiceEndpointUri = "https://api.office.com/discovery/v1.0/me/";
 
+                var discoveryServiceResourceId = "https://api.office.com/discovery/";
+
+                AuthenticationContext authContext = new AuthenticationContext(webconfig.Authority, new InMemoryTokenCache(signInUserId));
+
+                ClientCredential credential = new ClientCredential(webconfig.ClientId, webconfig.ClientSecret);
+
+                authContext.AcquireTokenByAuthorizationCode(code, new Uri(webconfig.RedirectURI), credential, resource);
+
+                DiscoveryClient discoveryClient = new DiscoveryClient(new Uri(discoveryServiceEndpointUri),
+                    async () =>
+                    {
+                        var authResult = await authContext.AcquireTokenSilentAsync(discoveryServiceResourceId,
+                                                                                   new ClientCredential(webconfig.ClientId,
+                                                                                                        webconfig.ClientSecret),
+                                                                                   new UserIdentifier(userObjectId,
+                                                                                                      UserIdentifierType.UniqueId));
+
+                        return authResult.AccessToken;
+                    });
+
+                var dcr = discoveryClient.DiscoverCapabilityAsync("Calendar").Result;
             });
         }
 
