@@ -1,4 +1,4 @@
-﻿step 1: Manually register your app with Azure AD so it can access Office 365 APIs ([details](https://msdn.microsoft.com/office/office365/howto/add-common-consent-manually))
+﻿step 1: Manually register your app with Azure AD so it can access Office 365 APIs ([details](https://msdn.microsoft.com/office/office365/howto/add-common-consent-manually)) (skip this step if your already had an app registered)
 
 step 2: set the redirect uri to 'http://localhost:2659/' in app registration
 
