@@ -1,0 +1,39 @@
+﻿@model IEnumerable< AspNetMvc_MultiTenant.Models.MailItem>
+
+@{
+    ViewBag.Title = "Mail Items";
+}
+
+
+<h2>Mail items</h2>
+
+<div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Sender
+            </th>
+            <th>
+                Subject
+            </th>
+            <th>
+                Received
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Received)
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

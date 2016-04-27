@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace AspNetMvc_with_O365.Controllers
 {
+
+    [Authorize]
+    [HandleError(ExceptionType = typeof(Office365AssertFailedException))]
     public class EmailController : Controller
     {
         private ServiceClientFactory _factory;

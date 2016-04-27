@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace AspNetMvc_with_O365
 {
-    public class AssertFailedException : Exception
+    public class Office365AssertFailedException : Exception
     {
-        public AssertFailedException(string message) : base (message)
+        public Office365AssertFailedException(string message) : base (message)
         {
         }
     }
@@ -19,7 +16,7 @@ namespace AspNetMvc_with_O365
         {
             if(obj == null)
             {
-                throw new AssertFailedException(message);
+                throw new Office365AssertFailedException(message);
             }
         }
 
@@ -27,7 +24,7 @@ namespace AspNetMvc_with_O365
         {
             if(string.IsNullOrWhiteSpace(text))
             {
-                throw new AssertFailedException(message);
+                throw new Office365AssertFailedException(message);
             }
         }
     }

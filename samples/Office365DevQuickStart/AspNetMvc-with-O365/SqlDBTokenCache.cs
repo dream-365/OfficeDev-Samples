@@ -13,6 +13,15 @@ namespace AspNetMvc_with_O365
 
         private string _userUniqueId { get; set; }
 
+        public void EnsureHasCacheMatched()
+        {
+            if(_cache == null)
+            {
+                throw new Office365AssertFailedException("Thre is not token matched in database");
+            }
+        }
+
+
         public SqlDBTokenCache(string userUniqueId)
         {
             AfterAccess = AfterAccessNotification;

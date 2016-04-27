@@ -13,6 +13,8 @@ namespace AspNetMvc_with_O365
 
         private string _objectId;
 
+        private string _tenantId;
+
         private AuthenticationContext _authContext;
 
         public ServiceClientFactory()
@@ -21,11 +23,15 @@ namespace AspNetMvc_with_O365
 
             _objectId = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
 
+            _tenantId = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
+
             Assert.ThrowExceptionIfIsNullOrWhiteSpace(_userUniqueId, "User UniqueId should be be null, empty or write space");
 
             Assert.ThrowExceptionIfIsNullOrWhiteSpace(_objectId, "User UniqueId should be be null, empty or write space");
 
-            var authority = string.Format("{0}/{1}", ServiceConstants.AzureADEndPoint, OAuthSettings.TenantId);
+            Assert.ThrowExceptionIfIsNullOrWhiteSpace(_tenantId, "Tenant Id should be be null, empty or write space");
+
+            var authority = string.Format("{0}/{1}", ServiceConstants.AzureADEndPoint, _tenantId);
 
             _authContext = new AuthenticationContext(authority, new SqlDBTokenCache(_userUniqueId));
         }
@@ -34,7 +40,12 @@ namespace AspNetMvc_with_O365
         {
             try
             {
+                var sqlDbTokenCache = _authContext.TokenCache as SqlDBTokenCache;
+
+                sqlDbTokenCache.EnsureHasCacheMatched();
+
                 DiscoveryClient discClient = new DiscoveryClient(new Uri(ServiceConstants.DiscoverySvcEndpointUri),
+
                 async () =>
                 {
                     var authResult = await _authContext.AcquireTokenSilentAsync(ServiceConstants.DiscoverySvcResourceId,
@@ -59,16 +70,21 @@ namespace AspNetMvc_with_O365
 
                         return authResult.AccessToken;
                     });
-            }catch(AdalException exception)
+            }
+            catch (AdalException exception)
             {
                 if (exception.ErrorCode == AdalError.FailedToAcquireTokenSilently)
                 {
                     _authContext.TokenCache.Clear();
 
-                    throw exception;
+                    throw new Office365AssertFailedException("Failed to acquire token silently");
                 }
 
                 return null;
+            }
+            catch(DiscoveryFailedException)
+            {
+                throw new Office365AssertFailedException("Failed to discovery the service, please ensure the app is registered under Office 365 tenant ad and grant the sufficient permissionss");
             }
         }
     }

@@ -10,6 +10,7 @@ namespace AspNetMvc_with_O365.Controllers
     /// <summary>
     /// Controls sign-in and sign-out.
     /// </summary>
+
     public class AccountController : Controller
     {
         public void SignIn()
@@ -38,8 +39,17 @@ namespace AspNetMvc_with_O365.Controllers
             return View();
         }
 
-        public void RefreshSession()
+        public void ClearCacheDatabase()
         {
+            var context = new TokenCacheDbContext();
+
+            foreach(var cacheItem in context.UserTokenCaches)
+            {
+                context.UserTokenCaches.Remove(cacheItem);
+            }
+
+            context.SaveChanges();
+
             string strRedirectController = Request.QueryString["redirect"];
 
             HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = String.Format("/{0}", strRedirectController) }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
