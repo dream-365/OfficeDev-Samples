@@ -13,9 +13,7 @@ namespace Security_basic
     {
         static void Main(string[] args)
         {
-            var demo = new AsymmetricSignAndVerify();
-
-            demo.Start();
+            new GetInfoOfCertificates().PrintInfo();
         }
     }
 }

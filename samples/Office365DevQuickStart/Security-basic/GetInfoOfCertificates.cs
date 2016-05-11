@@ -11,7 +11,7 @@ namespace Security_basic
     {
         public void PrintInfo()
         {
-            var x509Certificate2 = new X509Certificate2(@"{FILE_PATH}\office_365_app.pfx", "pass_word");
+            var x509Certificate2 = new X509Certificate2(@"C:\Workbench\certificates\office_365_app.pfx", "123456");
 
             var certRawData = x509Certificate2.Export(X509ContentType.Cert);
 

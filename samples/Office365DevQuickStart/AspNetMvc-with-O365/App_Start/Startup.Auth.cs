@@ -22,7 +22,10 @@ namespace AspNetMvc_with_O365
 
             var options = new OpenIdConnectAuthenticationOptions {
                 ClientId = OAuthSettings.ClientId,
-                Authority = authority
+                Authority = authority,
+                TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters {
+                    ValidateIssuer = false
+                }
             };
 
             options.Notifications = new OpenIdConnectAuthenticationNotifications
